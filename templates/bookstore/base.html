@@ -1,0 +1,14 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block rtab_id %}id="bookstore_tab"{% endblock %}
+
+{% block subnav %}
+    <ul>
+        <li><a href="{% url all_books %}">{% trans "All books" %}</a></li>
+        <li><a href="{% url your_books %}">{% trans "Your books" %}</a></li>
+        <li><a href="{% url add_book %}">{% trans "Add a book" %}</a></li>
+    </ul>
+{% endblock %}
+

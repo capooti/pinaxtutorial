@@ -1,0 +1,73 @@
+{% extends "bookstore/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% blocktrans %}Library{% endblocktrans %}{% endblock %}
+
+{% block body %}
+    
+    <h1>
+        {% ifequal list 'all' %}
+            {% trans "All Books" %}
+        {% endifequal %}
+        {% ifequal list 'user' %}
+            {% trans "Books of " %}{{ username }}
+        {% endifequal %}
+        {% ifequal list 'yours' %}
+            {% trans "Your Books" %}
+        {% endifequal %}
+    </h1>
+    
+    <!-- alternate -->
+    {% if books %}
+        
+        <table class="bookstore">
+            {% for book in books %}
+                <tr class="{% cycle odd,even %}">
+                    <!-- meta -->
+                    <td class="meta" >
+                        <div class="details">{% blocktrans %}added by{% endblocktrans %} <a href="{% url profile_detail book.adder.username %}">{{ book.adder }}</a></div>
+                        {% blocktrans %}on{% endblocktrans %} {{ book.added|date }}
+                        <a href="/bookstore/user_books/{{ book.adder.username }}"><i>{% blocktrans %}View all books added by {% endblocktrans %}{{ book.adder }}</i></a>
+                    </td>
+                    <!-- book info -->
+                    <td>
+                        <h3><a href="/bookstore/{{ book.id }}/book/">{{ book.title }}</a></h2>
+                        <div class="body">
+                            <strong><i>{{ book.publisher }}<br />{{ book.author }}<br /></strong></i>
+                            {{ book.description|linebreaks|truncatewords:50 }}
+                        </div>
+                        {% ifequal list 'yours' %}
+                            <table>
+                                <tr>
+                                    <td>
+                                        <!-- udpate book -->
+                                        <form method="GET" action="{% url update_book book.id %}">
+                                            <input type="submit" value="{% trans "Update Book" %}" />
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <!-- delete book -->
+                                        <form method="POST" action="{% url delete_book book.id %}">
+                                            <input type="submit" value="{% trans "Delete Book" %}" />
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        {% endifequal %}
+                    </td>
+                    <!-- cover art -->
+                    <td>
+                        <div class="coverart" >{{ book.thumb|safe }}</div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+        
+    {% else %}
+        <p>{% trans "No books yet." %}</p>
+    {% endif %}
+    
+{% endblock %}
+

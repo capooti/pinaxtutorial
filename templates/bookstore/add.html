@@ -1,0 +1,20 @@
+{% extends "bookstore/base.html" %}
+
+{% load i18n %}
+{% load uni_form %}
+
+{% block head_title %}{% blocktrans %}Add Book{% endblocktrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans "Add Book" %}</h1>
+    
+    <form enctype="multipart/form-data" method="POST" action="" class="uniForm">
+        <fieldset class="inlineLabels">
+            {{ book_form|as_uni_form }}
+            <div class="form_block">
+                <input type="submit" value="{% trans 'add book' %}">
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}
+

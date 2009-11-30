@@ -13,6 +13,7 @@ Index of tutorial:
    
    introduction
    installation
+   basicapplication
 
 Indices and tables
 ==================

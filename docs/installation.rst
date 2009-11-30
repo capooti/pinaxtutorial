@@ -1,7 +1,7 @@
 Installing Pinax and making basic customisation
 ===============================================
 
-I will assume you are installing Pinax v0.7 on a Ubuntu 9.04 box, but this procedure - with a few modifications, should work well on every Linux box. For Windows please refer to the Pinax official site or - rather I highly reccomend to use `VirtualBox <http://www.virtualbox.org/>`_, and to create an Ubuntu 9.04 Virtual Machine, so you will be able to follow step by step this tutorial.
+I will assume you are installing Pinax v0.7.1 on a Ubuntu 9.04 box, but this procedure - with a few modifications, should work well on every Linux box. For Windows please refer to the Pinax official site or - rather I highly reccomend to use `VirtualBox <http://www.virtualbox.org/>`_, and to create an Ubuntu 9.04 Virtual Machine, so you will be able to follow step by step this tutorial.
 There are ready images like `this one <http://go2.wordpress.com/?id=725X1342&site=virtualbox.wordpress.com&url=http%3A%2F%2Fdownloads.sourceforge.net%2Fvirtualboximage%2Fubuntu-9.04-x86.7z>`_, to make things even easier.
 
 As suggested from the `official installation procedure <http://pinaxproject.com/docs/0.7/install.html>`_, the release bundle has everything you need for running Pinax.
@@ -11,7 +11,7 @@ What is not included is:
 * `Python Imaging Library (PIL) <http://www.pythonware.com/products/pil/>`_;
 * `SQLite <http://www.sqlite.org/>`_.
 
-Ubuntu 9.04 includes Python 2.6, PIL 1.1.6 and SQLite 3.6.10, so you have everything. If you are using another Ubuntu version or a different Linux distribution, please verify to have all of this software. You will install and use for this tutorial Pinax v0.7 (latest release at the date of this post).
+Ubuntu 9.04 includes Python 2.6, PIL 1.1.6 and SQLite 3.6.10, so you have everything. If you are using another Ubuntu version or a different Linux distribution, please verify to have all of this software. You will install and use for this tutorial Pinax v0.7.1 (latest release at the date of this post).
 
 Installing Pinax
 ----------------
@@ -21,8 +21,8 @@ Download Pinax
 
 First step for installing Pinax is to download it. First create a directory named virtualenv, then download the tar.gz bundle and extract it in that directory ::
 
-	paolo@ubuntu:~/virtualenv$ wget http://downloads.pinaxproject.com/Pinax-0.7-bundle.tar.gz
-	paolo@ubuntu:~/virtualenv$ tar zxf Pinax-0.7-bundle.tar.gz
+	paolo@ubuntu:~/virtualenv$ wget http://downloads.pinaxproject.com/Pinax-0.7.1-bundle.tar.gz
+	paolo@ubuntu:~/virtualenv$ tar zxf Pinax-0.7.1-bundle.tar.gz
 
 Creation of the virtualenv
 ++++++++++++++++++++++++++
@@ -91,18 +91,18 @@ You can easily check that nothing has been written to the /usr/lib/python2.5/sit
 
 Now that you understand what a virtualenv is, you are ready to create the virtual environment, and you will name it pinax-env. For doing so you will use a python script included in the Pinax bundle instead than the virtualenv command::
 
-	paolo@ubuntu:~/virtualenv$ cd Pinax-0.7-bundle/
-	paolo@ubuntu:~/virtualenv/Pinax-0.7-bundle$ python scripts/pinax-boot.py ../pinax-env
+	paolo@ubuntu:~/virtualenv$ cd Pinax-0.7.1-bundle/
+	paolo@ubuntu:~/virtualenv/Pinax-0.7.1-bundle$ python scripts/pinax-boot.py ../pinax-env
 
 Wait a while while the virtualenv is created, and then activate it::
 
-	paolo@ubuntu:~/virtualenv/Pinax-0.7-bundle$ cd ../pinax-env/
+	paolo@ubuntu:~/virtualenv/Pinax-0.7.1-bundle$ cd ../pinax-env/
 	paolo@ubuntu:~/virtualenv/pinax-env$ source bin/activate
 
 Note now what is in the virtualenv site-packages directory (tons of useful stuff, this is the Pinax core!)::
 
 	(pinax-env)paolo@ubuntu:~/virtualenv/pinax-env$ ls lib/python2.6/site-packages/
-	ajax_validation                                 django_markup                                      Pinax-0.7-py2.6.egg-info
+	ajax_validation                                 django_markup                                      Pinax-0.7.1-py2.6.egg-info
 	announcements                                   django_markup-0.3-py2.6.egg-info                   pip-0.4.1devdev-py2.6.egg
 	atom                                            django_messages-0.4.2-py2.6.egg-info               pygments
 	atomformat.py                                   django_microblogging-0.1.2-py2.6.egg-info          Pygments-1.0-py2.6.egg-info

@@ -1,0 +1,48 @@
+{% extends "bookstore/base.html" %}
+
+{% load i18n %}
+{% load uni_form %}
+
+{% block head_title %}{% blocktrans %}Book Description{% endblocktrans %}{% endblock %}
+
+{% block body %}
+    <h1>{{ book.title }}</h1>
+        <p>
+             <div class="coverart" >{{ book.fullpicture|safe }}</div>
+        </p>
+        <p>
+            <!-- book info -->
+            <h3>{{ book.title }}</h2>
+            <div class="body">
+                <strong><i>{{ book.publisher }}<br />{{ book.author }}<br /></strong></i>
+                            {{ book.description|linebreaks }}
+            </div>
+        </p>
+        <p>
+            <!-- book action -->
+            {% if isyours %}
+                <table>
+                    <tr>
+                        <td>
+                            <!-- udpate book -->
+                            <form method="GET" action="{% url update_book book.id %}">
+                                <input type="submit" value="{% trans "Update Book" %}" />
+                            </form>
+                        </td>
+                        <td>
+                            <!-- delete book -->
+                            <form method="POST" action="{% url delete_book book.id %}">
+                                <input type="submit" value="{% trans "Delete Book" %}" />
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            {% endif %}
+        </p>
+        <p class="meta">
+            <!-- meta -->
+            <div class="details">{% blocktrans %}added by{% endblocktrans %} <a href="{% url profile_detail book.adder.username %}">{{ book.adder }}</a></div>{% blocktrans %}on{% endblocktrans %} {{ book.added|date }}
+        </p>
+        
+{% endblock %}
+
