@@ -14,6 +14,7 @@ Index of tutorial:
    introduction
    installation
    basicapplication
+   internationalization
 
 Indices and tables
 ==================

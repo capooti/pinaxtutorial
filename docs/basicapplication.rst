@@ -819,6 +819,9 @@ Where can I get the code?
 -------------------------
 
 The whole tutorial is at gitHub: http://github.com/capooti/pinaxtutorial
+
+Code for this part is here: http://github.com/capooti/pinaxtutorial/commits/PinaxTutorial-2
+
 There you can download tutorial's code, and the tutorial text in restructured text format (Sphinx ready).
 
 
