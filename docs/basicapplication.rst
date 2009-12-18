@@ -415,7 +415,7 @@ PROJECT_ROOT/bookstore/forms.py ::
             # if a book with that title already exists...
             if not self.is_update:
                 if Book.objects.filter(title=self.cleaned_data['title']).count() > 0:
-                    raise forms.ValidationError(_("There is already this book in the library."))
+                    raise forms.ValidationError(_("There is already this book in the bookstore."))
             return self.cleaned_data
         
         class Meta:
@@ -524,9 +524,11 @@ Writing the templates
 Writing the base template
 +++++++++++++++++++++++++
 
-First you create a base template for the Bookstore application. This base template will be extend by all the Bookstore application templates. 
+First create a PROJECT_ROOT/bookstore/templates/bookstore directory where you will place the templates needed by the Bookstore application.
 
-PROJECT_ROOT/templates/bookstore/base.html::
+Now create a base template for the Bookstore application. This base template will be extend by all the Bookstore application templates. 
+
+PROJECT_ROOT/bookstore/templates/bookstore/base.html::
 
     {% extends "site_base.html" %}
 
@@ -550,17 +552,18 @@ Creating a template for listing the books
 
 This is the template that the application will use to render the books, your_books and user_books views.
 Before writing any template, you need to create the directory that will actually contain them: create a bookstore directory in the templates directory of the project.
+
 Also you need to create a PROJECT_ROOT/site_media/media/bookstore/thumb_100_100 directory to manage thumbnails, according to the way the get_thumb_url method is written (you could make things easily customisable with a variable in settings.py).
 
 Now it is time to create the books.html, the template for listing the books:
 
-PROJECT_ROOT/templates/bookstore/books.html template ::
+PROJECT_ROOT/bookstore/templates/bookstore/books.html template ::
 
     {% extends "bookstore/base.html" %}
 
     {% load i18n %}
 
-    {% block head_title %}{% blocktrans %}Library{% endblocktrans %}{% endblock %}
+    {% block head_title %}{% blocktrans %}Bookstore{% endblocktrans %}{% endblock %}
 
     {% block body %}
     
@@ -644,7 +647,7 @@ Creating a template for viewing a book
 This is maybe the easiest of the templates you need to create.
 Create the book.html template using the following code:
 
-PROJECT_ROOT/templates/bookstore/book.html template ::
+PROJECT_ROOT/bookstore/templates/bookstore/book.html template ::
 
     {% extends "bookstore/base.html" %}
 
@@ -706,9 +709,9 @@ It is a bit like the books.html template, but here Django is rendering only one 
 Creating a template for adding a book
 +++++++++++++++++++++++++++++++++++++
 
-Now create the add.html template, for adding new books to the library:
+Now create the add.html template, for adding new books to the bookstore:
 
-PROJECT_ROOT/templates/bookstore/add.html template ::
+PROJECT_ROOT/bookstore/templates/bookstore/add.html template ::
 
     {% extends "bookstore/base.html" %}
 
@@ -735,9 +738,9 @@ Here there is nothing much to explain, you are rendering the template with a Boo
 Creating a template for updating an existing book
 +++++++++++++++++++++++++++++++++++++++++++++++++
 
-Time to create the update template, for updating a book in the library:
+Time to create the update template, for updating a book in the bookstore:
 
-PROJECT_ROOT/templates/bookstore/update.html template ::
+PROJECT_ROOT/bookstore/templates/bookstore/update.html template ::
 
     {% extends "bookstore/base.html" %}
 

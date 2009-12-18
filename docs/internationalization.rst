@@ -185,7 +185,7 @@ Notes
 As usual I have updated the gitHub repository for this project (the tutorial) with all the stuff you many need to go along with it:
 
 * You can find the code of this part of the tutorial `here <http://github.com/capooti/pinaxtutorial/tree/PinaxTutorial-3>`_
-* You can find updated documentation in reST format here
-* You can download a pdf copy of this tutorial here
+* You can find updated documentation in reST format `here <http://github.com/capooti/pinaxtutorial/tree/PinaxTutorial-3/docs/>`_
+* You can download a pdf copy of this tutorial here `<http://github.com/capooti/pinaxtutorial/blob/PinaxTutorial-3/pinaxtutorial.pdf>`_
 
 
