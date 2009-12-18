@@ -1,6 +1,8 @@
 {% extends "bookstore/base.html" %}
 
 {% load i18n %}
+{% load avatar_tags %}
+{% load pagination_tags %}
 
 {% block head_title %}{% blocktrans %}Library{% endblocktrans %}{% endblock %}
 
@@ -20,12 +22,15 @@
     
     <!-- alternate -->
     {% if books %}
+    
+    {% autopaginate books 5 %}
         
         <table class="bookstore">
             {% for book in books %}
                 <tr class="{% cycle odd,even %}">
                     <!-- meta -->
                     <td class="meta" >
+                    	<div class="avatar" >{% avatar book.adder 40 %}</div>
                         <div class="details">{% blocktrans %}added by{% endblocktrans %} <a href="{% url profile_detail book.adder.username %}">{{ book.adder }}</a></div>
                         {% blocktrans %}on{% endblocktrans %} {{ book.added|date }}
                         <a href="/bookstore/user_books/{{ book.adder.username }}"><i>{% blocktrans %}View all books added by {% endblocktrans %}{{ book.adder }}</i></a>
@@ -64,7 +69,8 @@
             {% endfor %}
         </table>
         
-        
+    {% paginate %}
+
     {% else %}
         <p>{% trans "No books yet." %}</p>
     {% endif %}

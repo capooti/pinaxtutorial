@@ -474,7 +474,7 @@ Plugging the bookstore application into Pinax
 
 To to so, you just need to modify site_base.html to include the the bookstore.css and the bookstore application (you just need to add two lines): 
 
-PROJECT_ROOT/templates/site_base.html::
+PROJECT_ROOT/bookstore/templates/bookstore/site_base.html::
 
     {% block extra_head_base %}
         <link rel="stylesheet" href="{{ STATIC_URL }}css/site_tabs.css" />
@@ -817,6 +817,8 @@ What's next
 -----------
 
 Now that you are ready with the basic bookstore application, you may read the next tutorial parts (as soon as they will appear at this blog) in order to implement other features like localization, pagination, avatars, profiles, voting, tagging, feeds, comments, notifications, and flags for contents.
+
+Basically, you may be able to follow each of these parts without proceding in the tutorial's order.
 
 Where can I get the code?
 -------------------------
