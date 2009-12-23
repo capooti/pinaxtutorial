@@ -18,6 +18,7 @@ Index of tutorial:
    basicapplication
    internationalization
    morefeatures
+   comments
 
 Indices and tables
 ==================

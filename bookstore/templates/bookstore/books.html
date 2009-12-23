@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load avatar_tags %}
 {% load pagination_tags %}
+{% load threadedcommentstags %}
 
 {% block head_title %}{% blocktrans %}Library{% endblocktrans %}{% endblock %}
 
@@ -42,6 +43,10 @@
                             <strong><i>{{ book.publisher }}<br />{{ book.author }}<br /></strong></i>
                             {{ book.description|linebreaks|truncatewords:50 }}
                         </div>
+                        <!-- comments -->
+                        <img src="{{ STATIC_URL }}pinax/images/silk/icons/comment.png" border="0" class="noborder" align="absmiddle" />
+                        <a href="/bookstore/{{ book.id }}/book/#comments">{% get_comment_count for book as commentcount %}
+                            {{ commentcount }} Comments</a><br />
                         {% ifequal list 'yours' %}
                             <table>
                                 <tr>
